@@ -93,10 +93,11 @@ class _PadState extends State<Pad> {
     double height = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () async {
+        player.play(widget.note);
         setState(() {
           colorCenter = Colors.white;
           colorOutline = Colors.white;
-          player.play(widget.note);
+
         });
         await Future.delayed(const Duration(milliseconds: 500));
         setState(() {
