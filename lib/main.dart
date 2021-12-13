@@ -94,9 +94,9 @@ class _PadState extends State<Pad> {
     return GestureDetector(
       onTap: () async {
         setState(() {
+          player.play(widget.note);
           colorCenter = Colors.white;
           colorOutline = Colors.white;
-          player.play(widget.note);
         });
         await Future.delayed(const Duration(milliseconds: 500));
         setState(() {
