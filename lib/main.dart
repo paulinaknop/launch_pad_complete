@@ -1,8 +1,6 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
-import 'package:google_fonts/google_fonts.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "LaunchPad",
+      debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
             appBar: AppBar(
@@ -21,8 +21,7 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.black,
             ),
             backgroundColor: Colors.black,
-            body: Padding(
-              padding: EdgeInsets.all(0.0),
+            body: Center(
               child: Wrap(
                 spacing: 6,
                 runSpacing: 6,
@@ -64,9 +63,9 @@ class MyApp extends StatelessWidget {
 }
 
 class Pad extends StatefulWidget {
-  late Color colorCenter;
-  late Color colorOutline;
-  String note;
+  final colorCenter;
+  final colorOutline;
+  final note;
 
   Pad(this.colorCenter, this.colorOutline, this.note, {Key? key})
       : super(key: key);
@@ -78,7 +77,7 @@ class Pad extends StatefulWidget {
 class _PadState extends State<Pad> {
   late Color colorCenter;
   late Color colorOutline;
-  final player = AudioCache();
+  final player = AudioPlayer();
 
   @override
   void initState() {
@@ -94,7 +93,7 @@ class _PadState extends State<Pad> {
     return GestureDetector(
       onTap: () async {
         setState(() {
-          player.play(widget.note);
+          player.play(AssetSource(widget.note));
           colorCenter = Colors.white;
           colorOutline = Colors.white;
         });
