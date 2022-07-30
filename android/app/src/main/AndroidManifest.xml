@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.launch_pad">
    <application
-        android:label="launch_pad"
+        android:label="LaunchPad"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
